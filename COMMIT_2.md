@@ -14,12 +14,14 @@ Just to reiterate, the point of the Bowling Game Kata is to follow it closely, l
 [TestMethod] // << Add this new test method
 public void TestAllOnes()
 {
-Game game = new Game(); // << Game creation is replicated
-      for (int i = 0; i < 20; i++) // << Roll loop is replicated
-      {
-      	game.roll(1);
-}
-Assert.AreEqual(20, game.score);
+    Game game = new Game(); // << Game creation is replicated
+    
+    for (int i = 0; i < 20; i++) // << Roll loop is replicated
+    {
+      game.Roll(1);
+    }
+
+    Assert.AreEqual(20, game.Score);
 }
 ```
 
@@ -33,7 +35,7 @@ Assert.AreEqual(20, game.score);
 ```csharp
 public void roll(int pins)
 {
-    score += pins; // << increment score
+    Score += pins; // << increment score
 }
 ```
 
@@ -55,7 +57,7 @@ public void TestGutterGame()
 
     for(int i = 0; i < n; i++) // << added to the loop controller
     {
-        game.roll(pins);
+        game.Roll(pins);
     }
 
     Assert.AreEqual(0, game.score);
