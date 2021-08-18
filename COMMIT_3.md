@@ -253,9 +253,9 @@ public int Score()
         }
         else
         {
-            score += _rolls[i] + _rolls[i + 1];
+            score += _rolls[frameIndex] + _rolls[frameIndex + 1];
         }
-        i += 2;
+        frameIndex += 2;
     }
     return score;        
 }
