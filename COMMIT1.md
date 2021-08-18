@@ -122,8 +122,6 @@ So the bare minimum to pass the Gutter Game Test (where the score is zero) is to
 20. Commit your work so far.
 
 
-
-
 ## Structure of the C# / VS port
 
 My port of the Bowling Game Kata is broken down into the following sections, which largely follow the original:
