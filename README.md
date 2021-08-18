@@ -18,7 +18,7 @@ Also (and this is the point) – once you can do it in a few minutes, then you'll 
 
 ## Why bowling?
 
-The genius of the kata is that it's picked ten-pin bowling as a topic. Ten-pin bowling is, on the surface, one of the simplest possible games – you're simply knocking pins down with a ball, and getting a point for each one, right? 
+The genius of the kata is that it has ten-pin bowling as its topic. Ten-pin bowling is, on the surface, one of the simplest possible games – you're simply knocking pins down with a ball, and getting a point for each one, right? 
 
 However – there are a few serious complexities lurking in the scoring system – and in this respect it's very much like every "simple" app or system you'd ever be asked to code in real life. It looks simple, but you don't have to go too far into it before it'll tie you up in knots.
 
