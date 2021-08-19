@@ -18,7 +18,7 @@ Once you're getting familiar with all the moves, you can use the summary I've ma
 4. Hit **CTRL + Shift + N** once more and create a new C# .Net Core Class Library Project called *BowlingGame*, also adding it to the existing Solution. Make this .Net 3.1 too.
 5. Right-click on Dependencies under the Unit Test project you created first,select *Add a Project Reference* and add the BowlingGame project you just created.
 6. Click on the default UnitTest1.cs file in the Unit Test project, press **F2** and rename it *BowlingGameTests.cs*.
-7. Rename the test class BowlingGameTests, and Test 1 to be TestGutterGame.
+7. Rename the test class *BowlingGameTests*, and Test 1 to be *TestGutterGame*.
 8. Build the Solution by running all the tests **(CTRL + R, then A)**. 
 
 <span style="color:green">**TESTS PASS GREEN**</span>
