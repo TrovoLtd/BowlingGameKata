@@ -26,26 +26,29 @@ Below is a summary of all actions in the Kata. Once you’re familiar with the Kat
 ### Commit 1 - setup and Gutter Game Test
 
 1.	Open Visual Studio.
-2.	Create an empty Solution called Bowling Kata (CTRL + Shift + N).
+2.	Create an empty Solution called BowlingKata (CTRL + Shift + N).
 3.	Add a Unit Test Project to the Solution.
 4.	Add a Class Library to the Solution.
-5.	Create a reference from the Class Library to the Test Project.
+5.	Create a project reference from the Class Library to the Test Project.
 6.	Rename the UnitTest.cs file and class.
-7.	CTRL + R, A - Green
+7.	CTRL + R, A - Green.
 8.	Change the test name to TestGutterGame.
-9.	Instansiate a Game class in the test.
+9.	Write a call to a Game class in the test.
 10.	CTRL + Shift + B – won’t build.
 11.	CTRL + . over Game and generate new Game type in the BowlingGame project.
 12.	Delete Class1.cs from BowlingGame.
-13.	CTRL + R, A - Green 
-14.	Add loop of 20 rolls.
-15.	CTRL+. over roll method call and add roll method.
-16.	Add assertion to test.
-17.	CTRL+. over score and add score property.
-18.	CTRL + R, A - Red 
-19.	Refactor roll parameter to pins.
-20.	Delete Throw NotImplementedException.
-21.	CTRL + R, A – Green
+13.	CTRL + R, A - Green.
+14.	Write a call to a Roll method.
+15.	CTRL+. over Roll method call and add Roll method.
+16. Select the line that calls Roll and CTRL K, CTRL S - then surround with a for loop.
+17.	Add assertion that calls Game.Score to test.
+18.	CTRL+. over Score and add Score property.
+19.	CTRL + R, A - Red.
+20. Change Score property from double to int.
+21.	Refactor roll parameter to pins.
+22.	Delete Throw NotImplementedException.
+23.	CTRL + R, A – Green.
+24. Commit.
 
 ### Commit 2 - roll 20 1s
 

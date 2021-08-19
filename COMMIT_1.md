@@ -12,31 +12,35 @@ Once you’re getting familiar with all the moves, you can use the summary I’ve ma
 
 ## Begin
 
-1. Open Visual Studio and create a New > Project **(CTRL / Shift + N)**. 
-2. Create an empty Visual Studio Solution called Bowling Kata. 
-3. In Solution Explorer, right-click on the Solution and add a new Unit Test Project called *BowlingGame.Tests.Unit*.
-4. Right-click on the Solution once more and create a new Class Library Project called *Bowling Game*.
-5. Add a Reference to BowlingGame in the Unit Test project you created first.
-6. Right-click on the default UnitTest.cs file in the Unit Test project and rename it *BowlingGameTests.cs*.
-7. Build the Solution by running all the tests **(CTRL + R, then A)**. 
+1. Open Visual Studio and create a New > Project **(CTRL + Shift + N)**. 
+2. Create an empty Visual Studio Solution called BowlingKata. 
+3. Add another project using **CTRL + Shift + N**. Make it a C# NUnit Test Project called *BowlingGame.Tests.Unit*, and add it to the existing Solution. Give it a Target Framework of .Net Core 3.1. (See notes below).
+4. Hit **CTRL + Shift + N** once more and create a new C# .Net Core Class Library Project called *BowlingGame*, also adding it to the existing Solution. Make this .Net 3.1 too.
+5. Right-click on Dependencies under the Unit Test project you created first,select *Add a Project Reference* and add the BowlingGame project you just created.
+6. Click on the default UnitTest1.cs file in the Unit Test project, press **F2** and rename it *BowlingGameTests.cs*.
+7. Rename the test class BowlingGameTests, and Test 1 to be TestGutterGame.
+8. Build the Solution by running all the tests **(CTRL + R, then A)**. 
 
 <span style="color:green">**TESTS PASS GREEN**</span>
 
-There will be one passing test (the empty TestMethod1 test created in the default UnitTest.cs file).
+There will be one passing test (the Test1 test created in the default UnitTest.cs file, which just has Assert.Pass in it).
 
 ## First Test
 
 ```csharp
 
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BowlingGame; // << Add using statement to the BowlingGame project
+using NUnit.Framework;
+
 namespace BowlingGame.Tests.Unit
 {
-    [TestClass]
     public class BowlingGameTests
     {
-        [TestMethod]
+        [SetUp]
+        public void Setup()
+        {
+        }
+		
+        [Test]
         public void TestGutterGame() // << Change test name
         {
             Game game = new Game(); // << Won’t build as Game class doesn’t exist 
@@ -45,34 +49,45 @@ namespace BowlingGame.Tests.Unit
 }
 ```
 
-8. **Shift / CTRL + B**: fails to build as no class called Game.
-9. Move the curseor over Game initialisation statement and press **CTRL + .** . Select Generate New Type. Select Project BowlingGame, Create New File. 
-10. Delete Class1.cs from BowlingGame project.
-11. **Shift / CTRL + B**: succeeds.
+9. **Shift / CTRL + B**: fails to build as no class called Game.
+10. Move the cursor over Game initialisation statement and press **CTRL + .** . Select Generate New Type. Select Project BowlingGame, Create New File. 
+11. Delete Class1.cs from BowlingGame project.
 12. Run all tests - **CTRL + R, then A** 
 
 <span style="color:green">**TESTS PASS GREEN**</span>
 
+13. Write a call to a game.Roll(0) method. Move the cursor into Roll and **CTRL + .**. Select Generate method Game.Roll
+
 ```csharp
-[TestMethod]
+[Test]
 public void TestGutterGame()
 {
     Game game = new Game();
-    for(int i = 0; i < 20; i++)
+
+    game.Roll(0); // << Add call to roll method to the test.
+}
+```
+
+14. Select the whole game.Roll(0); line, then press **CTRL + K, CTRL + S** and select *for* to surround it with a for loop to give us the 20 rolls of the Gutter Game
+
+```csharp
+[Test]
+public void TestGutterGame()
+{
+    Game game = new Game();
+    for(int i = 0; i < 20; i++) // << Surround with a for loop.
     {
-        game.Roll(0); // << Add call to roll method to the test.
+        game.Roll(0); 
     }
 }
 ```
 
-13. Move cursor into Roll and **CTRL + .**. Select Generate method Game.Roll > Preview Changes > Apply
-14. **Shift + CTRL + B**: succeeds.
-15. Run all tests: **CTRL + R, then A**.
+14. Run all tests: **CTRL + R, then A**.
 
 <span style="color:red">**TESTS FAIL Red** (System.NotImplementedException).</span>
 
 ```csharp
-[TestMethod]
+[Test]
 public void TestGutterGame()
 {
 	Game game = new Game();
@@ -86,32 +101,35 @@ public void TestGutterGame()
 }
 ```
 
-16. Move cursor into score. **CTRL + .**, then add property Game.Score > Preview Changes > Apply
-17. **Shift + CTRL + B**: succeeds.
-18. Run all tests **CTRL + R, then A**. 
+15. Move cursor into score. **CTRL + .**, then add property Game.Score
+16. Run all tests **CTRL + R, then A**. 
 
 <span style="color:red">**TESTS FAIL Red** (System.NotImplementedException).</span>
 
-19. Edit Game class
+17. Edit Game class
 
 ```csharp
+using System; // << You don't need this - CTRL R, CTRL G to remove it
+
 namespace BowlingGame
 {
     public class Game
     {
-        public int score { get; set; }
+        public int score { get; set; } // << needs changing from double to int
 
         public void roll(int pins) // << Change parameter name
         {
-            throw new NotImplementedException(); << Delete
+            throw new NotImplementedException(); // << Delete
         }
     }
 }
 ```
 
-19. **CTRL + R, then A** 
+18. **CTRL + R, then A** 
 
 <span style="color:green">**TESTS PASS GREEN**</span>
+
+19. Commit your work so far.
 
 ## How is this working?
 
@@ -119,8 +137,15 @@ Zero is the default value for a non-nullable int in C#, so you can return it wit
 
 So the bare minimum to pass the Gutter Game Test (where the score is zero) is to just not set the value.
 
-20. Commit your work so far.
+## Notes
 
+It really doesn't matter too much what version of .Net you use, or if you use NUnit or MSTest, or whathaveyou. As mentioned, this isn't really about the code so much as getting into the habit of the red / green / refactor TDD method.
+
+So I just picked the most up-to-date setup as I could at time of writing. The underlying process ought to stay the same or very similar from dotnet version to dotnet version. That said, you may have to put the version you want to use on your machine before you can get going, of course.
+
+Also, I've tried to add some keyboard shortcuts to make Git Commits quicker. You can do that under Tools > Options > Keyboard, then the Git commands all start Team.Git ... 
+
+Oh, and it turns out you don't need to add a using statement for the BowlingGame to the tests in DotNet core... Who knew?
 
 ## Structure of the C# / VS port
 
