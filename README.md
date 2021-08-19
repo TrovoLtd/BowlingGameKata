@@ -20,7 +20,7 @@ Also (and this is the point) – once you can do it in a few minutes, then you'll 
 
 The genius of the kata is that it has ten-pin bowling as its topic. Ten-pin bowling is, on the surface, one of the simplest possible games – you're simply knocking pins down with a ball, and getting a point for each one, right? 
 
-However – there are a few serious complexities lurking in the scoring system – and in this respect it's very much like every "simple" app or system you'd ever be asked to code in real life. It looks simple, but you don't have to go too far into it before it'll tie you up in knots.
+However – there are a few serious complexities lurking in the [scoring system](INITIAL_DESIGN.md) – and in this respect it's very much like every "simple" app or system you'd ever be asked to code in real life. It looks simple, but you don't have to go too far into it before it'll tie you up in knots.
 
 This makes it a great choice for illustrating how to refactor your way from the simplest possible starting point towards a much more complex outcome, while keeping the code "in the green" (i.e. with all tests passing) for the maximum amount of time. 
 
