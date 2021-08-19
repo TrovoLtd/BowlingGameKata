@@ -49,7 +49,7 @@ namespace BowlingGame.Tests.Unit
 }
 ```
 
-9. **Shift / CTRL + B**: fails to build as no class called Game.
+9. Setup a Game class in TestGutterGame. Press **Shift / CTRL + B**, but the build fails as there's no class called Game yet.
 10. Move the cursor over Game initialisation statement and press **CTRL + .** . Select Generate New Type. Select Project BowlingGame, Create New File. 
 11. Delete Class1.cs from BowlingGame project.
 12. Run all tests - **CTRL + R, then A** 
