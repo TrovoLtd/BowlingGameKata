@@ -8,7 +8,7 @@ Remember, the point of the Kata is to follow the process as mapped out. Don't at
 
 Start from scratch each time, and don't deviate from the process too much, but instead learn it and aim to complete it as quickly as possible. Think of it as being like Speedrunning a video game level (see [Games Done Quick](https://www.twitch.tv/gamesdonequick), for example). 
 
-Once you’re getting familiar with all the moves, you can use the summary I’ve made after the final test to help get your speed up.
+Once you're getting familiar with all the moves, you can use the summary I've made after the [final commit](COMMIT_5.md) to help get your speed up.
 
 ## Begin
 
