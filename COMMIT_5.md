@@ -1,0 +1,113 @@
+# Commit 5, and Summary
+
+## The Perfect Game test
+
+1. Add a final test for a perfect game. It *should* just pass with no changes required to the Game class.
+
+```csharp
+[TestMethod]
+public void TestPerfectGame()
+{
+    _rollMany(12, 10);
+    Assert.AreEqual(300, _game.score());
+}
+```
+
+2. **CTRL + R, A** 
+
+<span style="color:green">**TESTS PASS GREEN**</span> 
+
+The Perfect Game test just passes.
+
+## Summary of all Actions
+
+Below is a summary of all actions in the Kata. Once you’re familiar with the Kata overall, you can use this summary to commit the Kata to memory and increase your speed.
+
+### Commit 1 - setup and Gutter Game Test
+
+1.	Open Visual Studio.
+2.	Create an empty Solution called Bowling Kata (CTRL + Shift + N).
+3.	Add a Unit Test Project to the Solution.
+4.	Add a Class Library to the Solution.
+5.	Create a reference from the Class Library to the Test Project.
+6.	Rename the UnitTest.cs file and class.
+7.	CTRL + R, A - Green
+8.	Change the test name to TestGutterGame.
+9.	Instansiate a Game class in the test.
+10.	CTRL + Shift + B – won’t build.
+11.	CTRL + . over Game and generate new Game type in the BowlingGame project.
+12.	Delete Class1.cs from BowlingGame.
+13.	CTRL + R, A - Green 
+14.	Add loop of 20 rolls.
+15.	CTRL+. over roll method call and add roll method.
+16.	Add assertion to test.
+17.	CTRL+. over score and add score property.
+18.	CTRL + R, A - Red 
+19.	Refactor roll parameter to pins.
+20.	Delete Throw NotImplementedException.
+21.	CTRL + R, A – Green
+
+### Commit 2 - roll 20 1s
+
+1.	Add a TestAllOnes test.
+2.	CTRL + R, A - Red 
+3.	Increment score with pins in roll() method
+4.	CTRL + R, A – Green 
+5.	Add roll management variables in TestGutterGame.
+6.	CTRL + R, A – Green 
+7.	Give Game fixture-wide scope in TestBowlingGame.
+8.	Refactor tests to use fixture-wide Game instance.
+9.	CTRL + R, A – Green 
+10.	Add _rollMany() helper method (CTRL+. over loop in TestGutterGame > Extract Method).
+11.	CTRL + R, A – Green 
+12.	Move _rollMany() method above tests.
+13.	CTRL + R, A – Green 
+
+### Commit 3 - testing a spare
+
+1.	Create a test for a spare.
+2.	CTRL + R, A - Red 
+3.	Comment the test out  (CTRL + K + C) while refactoring the Game class design.
+4.	CTRL + R, A – Green 
+5.	Add an array of ints - _rolls – with class scope to record rolls (instantiate in constructor).
+6.	Create an int with class scope to record the _currentRoll.
+7.	Create an int with class scope to hold the _score.
+8.	Alter _roll to add to _score and put roll in _rolls[_currentRoll++].
+9.	Remove the score property and create a score() method that calculates score using _rolls[].
+10.	CLTR+B – won’t build – refactor tests to call score().
+11.	CTRL + R, A – Green 
+12.	Remove class-scoped _score variable – not needed.
+13.	CTRL + R, A – Green
+14.	Uncomment TestSpare (CTRL + K + U).
+15.	Change to call score() method.
+16.	Add initial spare code to score() method.
+17.	CTRL + R, A – Red – now all tests fail with an index out of bounds exception.
+18.	Comment TestSpare out again (CTRL + K + C).
+19.	Add if / else statement code to cope with spare bonus.
+20.	CTRL + R, A – Green
+21.	Rename i to frameIndex.	
+22.	CTRL + R, A – Green
+23.	Add _isSpare helper. Select the spare condition and CTRL +. > Extract Method.
+24.	CTRL + R, A – Green 
+25.	Refactor TestIsSpare – extract _rollSpare() method (CTRL +.).
+26.	CTRL + R, A – Green 
+
+### Commit 4 - testing a strike
+
+1.	Add the test for a strike.
+2.	CTRL + R, A – Red
+3.	Add code to handle a strike.
+4.	CTRL + R, A – Green 
+5.	Extract _strikeBonus() method (CTRL + .).
+6.	CTRL + R, A – Green 
+7.	Extract _spareBonus() method (CTRL + .)
+8.	CTRL + R, A – Green 
+9.	Extract _isStrike() method (CTRL + .)
+10.	CTRL + R, A – Green
+11.	Extract _rollStrike() method from TestStrike() in the tests.
+12.	CTRL + R, A – Green
+
+### Commit 5 - the Perfect Game test
+
+1.	Add a TestPerfectGame() test.
+2.	CTRL + R, A – Green
