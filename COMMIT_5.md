@@ -111,3 +111,17 @@ Below is a summary of all actions in the Kata. Once you’re familiar with the Kat
 
 1.	Add a TestPerfectGame() test.
 2.	CTRL + R, A – Green
+
+## Structure of the C# / VS port
+
+My port of the Bowling Game Kata is broken down into the following sections, which largely follow the original:
+
+* [Introduction](README.md) 
+* [Initial Design](INITIAL_DESIGN.md)
+* [Commit 1](COMMIT_1.md) 
+* [Commit 2](COMMIT_2.md) 
+* [Commit 3](COMMIT_3.md) 
+* [Commit 4](COMMIT_4.md) 
+* [Commit 5](COMMIT_5.md) <-- You are here 
+
+There's also a Visual Studio Commits branch, with the five commits posted to it, so you can see the state the code should be in at the end of each part of the Kata.
