@@ -61,10 +61,11 @@ Below is a summary of all actions in the Kata. Once you’re familiar with the Kat
 7.	Give Game fixture-wide scope in TestBowlingGame.
 8.	Refactor tests to use fixture-wide Game instance.
 9.	CTRL + R, A – Green 
-10.	Add _rollMany() helper method (CTRL+. over loop in TestGutterGame > Extract Method).
+10.	Add *RollMany()* helper method (**CTRL + .** over loop in TestGutterGame > Extract Method). Delete the local roll management variables and tidy up TestAllOnes to call RollMany(20, 1).
 11.	CTRL + R, A – Green 
-12.	Move _rollMany() method above tests.
-13.	CTRL + R, A – Green 
+12.	Move *RollMany()* method above tests.
+13.	CTRL + R, A – Green
+14. Commit.
 
 ### Commit 3 - testing a spare
 
@@ -72,28 +73,31 @@ Below is a summary of all actions in the Kata. Once you’re familiar with the Kat
 2.	CTRL + R, A - Red 
 3.	Comment the test out  (CTRL + K + C) while refactoring the Game class design.
 4.	CTRL + R, A – Green 
-5.	Add an array of ints - _rolls – with class scope to record rolls (instantiate in constructor).
-6.	Create an int with class scope to record the _currentRoll.
-7.	Create an int with class scope to hold the _score.
-8.	Alter _roll to add to _score and put roll in _rolls[_currentRoll++].
-9.	Remove the score property and create a score() method that calculates score using _rolls[].
-10.	CLTR+B – won’t build – refactor tests to call score().
+5.	Add an array of ints - *_rolls* – with class scope to record rolls (instantiate in constructor).
+6.	Create an int with class scope to record the *_currentRoll*.
+7.	Create an int with class scope to hold the *_score*.
+8.	Alter *_roll* to add to _score and put roll in *_rolls[_currentRoll++]*.
+9.	Chane the Score property to a Score() method that calculates score using *_rolls[]*.
+10.	CLTR+B – won’t build – refactor tests to call Score().
 11.	CTRL + R, A – Green 
-12.	Remove class-scoped _score variable – not needed.
+12.	Remove class-scoped *_score* variable – not needed.
 13.	CTRL + R, A – Green
-14.	Uncomment TestSpare (CTRL + K + U).
-15.	Change to call score() method.
-16.	Add initial spare code to score() method.
-17.	CTRL + R, A – Red – now all tests fail with an index out of bounds exception.
-18.	Comment TestSpare out again (CTRL + K + C).
-19.	Add if / else statement code to cope with spare bonus.
-20.	CTRL + R, A – Green
-21.	Rename i to frameIndex.	
+14.	Uncomment TestSpare (**CTRL + K, CTRL + U**).
+15.	Change to call Score() method.
+16.	Add initial spare code to Score() method using "if a set of two rolls == 10..." logic.
+17.	CTRL + R, A – Red – now all tests fail with an IndexOutOfRangeException.
+18.	Comment TestSpare out again (**CTRL + K, CTRL + C**).
+19. Change Score() to use frames instead of sets of two rolls. (Take the if statement out temporarily).
+20. CTRL + R, A – Green
+21.	Re-add if / else statement code to cope with spare bonus.
 22.	CTRL + R, A – Green
-23.	Add _isSpare helper. Select the spare condition and CTRL +. > Extract Method.
-24.	CTRL + R, A – Green 
-25.	Refactor TestIsSpare – extract _rollSpare() method (CTRL +.).
+23.	Rename i to frameIndex.	
+24.	CTRL + R, A – Green
+25.	Extract *IsSpare()* helper. Select the spare condition and **CTRL +.** > Extract Method.
 26.	CTRL + R, A – Green 
+27.	Extract *TestIsSpare()* method (**CTRL +.** again).
+28.	CTRL + R, A – Green 
+29. Commit.
 
 ### Commit 4 - testing a strike
 

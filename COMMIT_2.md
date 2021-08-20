@@ -2,16 +2,16 @@
 
 ## Test Rolling 20 1s
 
-This is a port of [Uncle Bob's Bowling Game Kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata), ported to C# and Visual Studio.
+This is [Uncle Bob's Bowling Game Kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata), ported to C# and Visual Studio.
 
 Just to reiterate, the point of the Bowling Game Kata is to follow it closely, learn it and commit it to muscle memory like a [video game Speedrun](https://www.twitch.tv/gamesdonequick).
 
 ## Begin
 
-1. Add a second ‘TestAllOnes’ test to the BowlingGamesTests fixture:
+1. Add a second ‘TestAllOnes’ test to the BowlingGamesTests fixture. You can re-use the "surround with" approach from the [previous commit](COMMIT_1.md) here.
 
 ```csharp
-[TestMethod] // << Add this new test method
+[Test] // << Add this new test method
 public void TestAllOnes()
 {
     Game game = new Game(); // << Game creation is replicated
@@ -25,10 +25,9 @@ public void TestAllOnes()
 }
 ```
 
-2. **Shift / CTRL + B**: succeeds.
+2. **CTRL R, A**
 
 <span style="color:red">**TESTS FAIL Red** (TestAllOnes fails – expected 20, actual 0).</span>
-
 
 3. In the Game class:
 
@@ -45,10 +44,10 @@ public void roll(int pins)
 
 ## Refactoring the tests
 
-5. Add some variables to manage the rolling. There's a 'surround with' shortcut that will help add the for loop.
+5. Add some variables to manage the rolling. Use the 'surround with' shortcut **CTRL K, CTRL S** once more.
 
 ```csharp
-[TestMethod]
+[Test]
 public void TestGutterGame()
 {
     Game game = new Game();
@@ -66,29 +65,37 @@ public void TestGutterGame()
 6. Give Game fixture-wide scope:
 
 ```csharp
-[TestClass]
 public class BowlingGameTests
 {
     private Game _game; // << Game class with global scope
 
-    [TestInitialize] // << initialise it in a SetUp method
-    public void SetUp()
+    [SetUp] // << initialise it in the Setup method
+    public void Setup()
     {
         _game = new Game();
     }
     
-    [TestMethod]
-    public void TestGutterGame() ...
+    [Test]
+    public void TestGutterGame()
+	{
+		Game game = new Game(); // << Delete this
+		...
+		
+		for (int i = 0; i < n; i++)
+		{
+			_game.Roll(pins); // << Rename to the globally-scoped instance
+        }
+	
 ```
 	
 7. **Ctrl + R, A** 
 
 <span style="color:green">**TESTS PASS GREEN**</span>
 
-8. Add a _rollMany() helper method:
+8. Add a _rollMany() helper method by selecting the new for loop in TestGutterGame, pressing **CTRL + .** and Extracting a Method. Call it RollMany(). You can delete the *pins* and *n* variables once you've set the new method up. Remember to refactor TestAllOnes to use the new method, too, though:
 
 ```csharp
-[TestMethod]
+[Test]
 public void TestGutterGame()
 {
     _rollMany(20, 0);
@@ -96,7 +103,7 @@ public void TestGutterGame()
     Assert.AreEqual(0, _game.score);
 }
 
-private void _rollMany(int n, int pins)
+private void RollMany(int n, int pins)
 {
     for(int i=0; i < n; i++)
     {
@@ -107,7 +114,15 @@ private void _rollMany(int n, int pins)
 ```
 
 9. **Ctrl + R, A** – Green
-10. Commit
+10. Commit with the message *Adds Roll all ones test.*
+
+##  Notes
+
+This could be made a lot quicker if a [custom snippet](https://docs.microsoft.com/en-us/visualstudio/ide/walkthrough-creating-a-code-snippet?view=vs-2019) for NUnit tests was added. Then you could just setup the skeleton of a test using **CTRL K, CTRL X**.
+
+Also, **CTRL + TAB** is your friend when you have multiple tabs open in the in Visual Studio code editor.
+
+**CTRL + .** > Rename can always shave some time off here and there if used wisely.
 
 ## Structure of the C# / VS port
 

@@ -15,13 +15,14 @@ Indeed if you learn to work through the wrong without thinking about it, it's no
 1. Add a test for a spare.
 
 ```csharp
-[TestMethod]
+[Test]
 public void TestOneSpare()
 {
     _game.Roll(5);
     _game.Roll(5); // << Spare – Ugly comment in test
     _game.Roll(3);
-    _rollMany(17, 0);
+    
+	RollMany(17, 0);
 
     Assert.AreEqual(16, _game.score);
 }
@@ -54,13 +55,15 @@ To keep the codebase "in the Green" for as long as possible, the TestSpare class
 4. Comment out TestOneSpare - select the code, then **CTRL K, C**
 
 ```csharp
-//[TestMethod]
+//[Test]
 //public void TestOneSpare()
 //{
 //    _game.Roll(5);
 //    _game.Roll(5); // << Spare
 //    _game.Roll(3);
-//    _rollMany(17, 0);
+//    
+//	  RollMany(17, 0);
+//    
 //    Assert.AreEqual(16, _game.score);
 //}
 ```
@@ -104,7 +107,7 @@ public class Game
 7. **CTRL + Shift + B** – build fails - 'Score' now a method, not a property, so tests won't build.
 
 ```csharp
-[TestMethod]
+[Test]
 public void TestGutterGame()
 {
     _rollMany(20, 0);
@@ -141,11 +144,11 @@ public class Game
 
 <span style="color:green">**TESTS PASS GREEN**</span>
 
-11. Uncomment TestOneSpare (Select the code, then **CTRL + K + U**). Refactor to call Score() method.
+11. Uncomment TestOneSpare (Select the code, then **CTRL + K, CTRL U**). Refactor to call Score() method.
 
 <span style="color:red">**TESTS FAIL Red** (TestOneSpare fails – Expected 16, Actual 13).</span>
 
-12. Now add initial attempt to pass the test:
+12. Now add initial attempt to pass the test. You can use **CTRL + K, CTRL + S** to *surround with* an if statement here:
 
 ```csharp
 public int Score()
@@ -166,7 +169,7 @@ public int Score()
 
 13. **CTRL + R, A**
 
-<span style="color:red">**TESTS FAIL Red** (Fails with index out of bounds exception).</span>
+<span style="color:red">**TESTS FAIL Red** (They all fails with an IndexOutOfRangeException).</span>
 
 The above solution is wrong for a couple of reasons. Firstly it checks i+1 at the end of the array and thus fails with an out of bounds exception. 
 
@@ -174,7 +177,7 @@ But it also takes any two rolls adding up to ten to be a spare, regardless of wh
 
 The solution is to walk through the game one Frame (i.e. two rolls) at a time.
 
-13. Comment the failing test out again. (Select, **CTRL + K + C**). Then refactor Score() to step through two rolls (i.e. one frame) at a time.
+13. Comment the failing test out again. (Select, then **CTRL + K + C**). Then refactor Score() to step through two rolls (i.e. one frame) at a time.
 
 ```csharp
 
@@ -194,9 +197,9 @@ public int Score()
 
 14. **CTRL + R, A** 
 
-<span style="color:green">**TESTS PASS GREEN**</span>
+<span style="color:green">**TESTS PASS GREEN**</span> - the first two tests are back green again, even though we've introduced frames into the design.
 
-15. Uncomment TestSpare again...
+15. Uncomment TestSpare again (Select, then **CTRL K, CTRL U**)...
 16. **CTRL + R, A** 
 
 <span style="color:red">**TESTS FAIL Red** (TestOneSpare fails – Expected 16, Actual 13).</span>
@@ -239,7 +242,7 @@ And the // Spare comment would be better handled in the code itself.
 
 <span style="color:green">**TESTS PASS GREEN**</span>
 
-21. Now refactor to handle spares more obviously (i.e. remove the comment and use readable code).
+21. Now refactor to handle spares more obviously (i.e. remove the comment and use readable code). You can use **CTRL + .** Extract Method here.
 
 ```csharp
 public int Score()
@@ -247,7 +250,7 @@ public int Score()
     ...
     for (int frame = 0; frame < 10; frame++)
     {
-        if(_isSpare(frameIndex)) // << Add call to helper method
+        if(IsSpare(frameIndex)) // << Extract a helper method
         {
             score += 10 + _rolls[frameIndex + 2];
         }
@@ -260,7 +263,7 @@ public int Score()
     return score;        
 }
 
-private bool _isSpare(int frameIndex) // << Helper calculates spare
+private bool IsSpare(int frameIndex) // << Helper calculates spare
 {
 	return (_rolls[frameIndex] + _rolls[frameIndex + 1]) == 10;
 }
@@ -272,29 +275,31 @@ private bool _isSpare(int frameIndex) // << Helper calculates spare
 
 ## Refactor the test
 
-There's a similar unnecessary comment about spares in the tests that can be handled better in code, too:
+23. There's a similar unnecessary comment about spares in the tests that can be handled better in code, too. Again, **CTRL + .** Extract Method is your friend:
 
 ```csharp
-private void _rollSpare() // << Add a _rollSpare helper method
+private void RollSpare() // << Extract a RollSpare helper method
 {
     _game.roll(5);
     _game.roll(5);
 }
 ...
 
-[TestMethod]
+[Test]
 public void TestOneSpare()
 {
-    _rollSpare(); // << Call it in the test
+    RollSpare(); // << Call it in the test
     _game.roll(3);
     _rollMany(17, 0);
     Assert.AreEqual(16, _game.score());
 }
 ```
 
-23. **CTRL + R, A** 
+24. **CTRL + R, A** 
 
 <span style="color:green">**TESTS PASS GREEN**</span>
+
+25. Commit the code with the message: *Adds Test for a Spare.*
 
 ## Structure of the C# / VS port
 

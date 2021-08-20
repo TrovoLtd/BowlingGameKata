@@ -23,7 +23,9 @@ Once you're getting familiar with all the moves, you can use the summary I've ma
 
 <span style="color:green">**TESTS PASS GREEN**</span>
 
-There will be one passing test (the Test1 test created in the default UnitTest.cs file, which just has Assert.Pass in it).
+TestGutterGame in BowlingGameTests just has Assert.Pass in it for now.
+
+9. Setup a Game class in TestGutterGame. Press **Shift / CTRL + B**, but the build fails as there's no class called Game yet.
 
 ## First Test
 
@@ -49,7 +51,6 @@ namespace BowlingGame.Tests.Unit
 }
 ```
 
-9. Setup a Game class in TestGutterGame. Press **Shift / CTRL + B**, but the build fails as there's no class called Game yet.
 10. Move the cursor over Game initialisation statement and press **CTRL + .** . Select Generate New Type. Select Project BowlingGame, Create New File. 
 11. Delete Class1.cs from BowlingGame project.
 12. Run all tests - **CTRL + R, then A** 
@@ -75,6 +76,7 @@ public void TestGutterGame()
 public void TestGutterGame()
 {
     Game game = new Game();
+	
     for(int i = 0; i < 20; i++) // << Surround with a for loop.
     {
         game.Roll(0); 
@@ -86,27 +88,29 @@ public void TestGutterGame()
 
 <span style="color:red">**TESTS FAIL Red** (System.NotImplementedException).</span>
 
+15. Add an Assertion to the test calling a game.Score property.
+
 ```csharp
 [Test]
 public void TestGutterGame()
 {
 	Game game = new Game();
 
-       for(int i = 0; i < 20; i++)
-       {
-          game.Roll(0);
-       }
+	for(int i = 0; i < 20; i++)
+	{
+	  game.Roll(0);
+	}
        
 	Assert.AreEqual(0, game.Score); // << Add assertion and call to .Score
 }
 ```
 
-15. Move cursor into score. **CTRL + .**, then add property Game.Score
-16. Run all tests **CTRL + R, then A**. 
+16. Move cursor into score. **CTRL + .**, then add property Game.Score
+17. Run all tests **CTRL + R, then A**. 
 
 <span style="color:red">**TESTS FAIL Red** (System.NotImplementedException).</span>
 
-17. Edit Game class
+18. Edit Game class as per the comments below.
 
 ```csharp
 using System; // << You don't need this - CTRL R, CTRL G to remove it
@@ -125,25 +129,25 @@ namespace BowlingGame
 }
 ```
 
-18. **CTRL + R, then A** 
+19. **CTRL + R, then A** 
 
 <span style="color:green">**TESTS PASS GREEN**</span>
 
-19. Commit your work so far.
+20. Commit your work so far with the message *Adds Gutter Game Test.*
 
 ## How is this working?
 
-Zero is the default value for a non-nullable int in C#, so you can return it without setting a value. 
+Zero is the default value for a non-nullable int in C#, so you can return it by default without setting a value. 
 
 So the bare minimum to pass the Gutter Game Test (where the score is zero) is to just not set the value.
 
 ## Notes
 
-It really doesn't matter too much what version of .Net you use, or if you use NUnit or MSTest, or whathaveyou. As mentioned, this isn't really about the code so much as getting into the habit of the red / green / refactor TDD method.
+It really doesn't matter too much what version of .Net you use, or if you use NUnit or MSTest, or whathaveyou. This really isn't about the code, it's about getting into the habit of the red / green / refactor TDD method.
 
 So I just picked the most up-to-date setup as I could at time of writing. The underlying process ought to stay the same or very similar from dotnet version to dotnet version. That said, you may have to put the version you want to use on your machine before you can get going, of course.
 
-Also, I've tried to add some keyboard shortcuts to make Git Commits quicker. You can do that under Tools > Options > Keyboard, then the Git commands all start Team.Git ... 
+Also, even though they aren't mentioned above yet, I've tried to add some keyboard shortcuts to make Git Commits quicker. You can do that under Tools > Options > Keyboard, then the Git commands all start Team.Git, but they aren't part of the standard set of VS shortcuts, while all the ones mentioned above are ... 
 
 Oh, and it turns out you don't need to add a using statement for the BowlingGame to the tests in DotNet core... Who knew?
 
