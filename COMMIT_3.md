@@ -18,13 +18,13 @@ Indeed if you learn to work through the wrong without thinking about it, it's no
 [Test]
 public void TestOneSpare()
 {
-    _game.Roll(5);
-    _game.Roll(5); // << Spare – Ugly comment in test
-    _game.Roll(3);
-    
+	_game.Roll(5);
+	_game.Roll(5); // << Spare – Ugly comment in test
+	_game.Roll(3);
+
 	RollMany(17, 0);
 
-    Assert.AreEqual(16, _game.score);
+	Assert.AreEqual(16, _game.score);
 }
 ```
 
@@ -58,13 +58,13 @@ To keep the codebase "in the Green" for as long as possible, the TestSpare class
 //[Test]
 //public void TestOneSpare()
 //{
-//    _game.Roll(5);
-//    _game.Roll(5); // << Spare
-//    _game.Roll(3);
+//		_game.Roll(5);
+//		_game.Roll(5); // << Spare
+//		_game.Roll(3);
 //    
-//	  RollMany(17, 0);
+//		RollMany(17, 0);
 //    
-//    Assert.AreEqual(16, _game.score);
+//		Assert.AreEqual(16, _game.score);
 //}
 ```
 
