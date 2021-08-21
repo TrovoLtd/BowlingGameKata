@@ -186,7 +186,7 @@ public int Score()
 }
 
 private bool IsStrike(int frameIndex)
-{
+{	
     return _rolls[frameIndex] == 10;
 }
 ```
