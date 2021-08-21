@@ -8,7 +8,7 @@ We've got as far as the fourth commit, where we add the functionality for rollin
 
 ## Add the test for rolling a strike
 
-1. Add the test below, which includes a Roll of 10 (i.e. a strike)..
+1. Add the test below, which includes a Roll of 10 (i.e. a strike):
 
 ```csharp
 [Test]
@@ -52,8 +52,8 @@ public int Score()
         {
             score += _rolls[frameIndex] + _rolls[frameIndex + 1];
             frameIndex += 2; // Moved here
- 	    }
-    }
+		}
+	}
 
     return score;
 }
@@ -69,7 +69,7 @@ public int Score()
 
 The following refactorings can be made to Game to make it more readable:
 
-5. First, extract a _strikeBonus helper method (**CTRL + . – Extract Method**)
+5. First, extract a StrikeBonus helper method (**CTRL + . – Extract Method**)
 
 ```csharp
 public int Score()
@@ -83,10 +83,10 @@ public int Score()
         {
             score += 10 + StrikeBonus(frameIndex); // < More readable
             frameIndex++;
- 	    }
- 	    else if (IsSpare(frameIndex))
-        {
-            ...
+		}
+		else if (IsSpare(frameIndex))
+		{
+			...
 		}
 
     return score;
@@ -116,7 +116,7 @@ public int Score()
     {
  		...
     }
- 	else if (IsSpare(frameIndex))
+	else if (IsSpare(frameIndex))
     {
         score += 10 + SpareBonus(frameIndex);
     }
@@ -142,13 +142,13 @@ public int Score()
     
     for (int frame = 0; frame < 10; frame++)
     {
- 		...
- 	    else
-        {
-			score += SumOfBallsInFrame(frameIndex);
-        }
+		...
     }
-    
+	else
+	{
+		score += SumOfBallsInFrame(frameIndex);
+	}
+
     return score;
 }
 
@@ -170,20 +170,19 @@ public int Score()
     
     for (int frame = 0; frame < 10; frame++)
     {
-        if(IsStrike(frameIndex)) // strike
-        {
-            score += 10 + StrikeBonus(frameIndex); // < More readable
- 	 	    frameIndex++;
- 	    }
- 	    else if (IsSpare(frameIndex))
-        {
-             ...
+		if(IsStrike(frameIndex)) // strike
+		{
+			score += 10 + StrikeBonus(frameIndex); // < More readable
+			frameIndex++;
 		}
-
+		else if (IsSpare(frameIndex))
+		{
+			...
+		}
         ...
-    }
+	}
 
-    return score;
+	return score;
 }
 
 private bool IsStrike(int frameIndex)
