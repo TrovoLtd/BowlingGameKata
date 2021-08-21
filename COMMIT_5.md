@@ -5,10 +5,10 @@
 1. Add a final test for a perfect game. It *should* just pass with no changes required to the Game class.
 
 ```csharp
-[TestMethod]
+[Test]
 public void TestPerfectGame()
 {
-    _rollMany(12, 10);
+    RollMany(12, 10);
     Assert.AreEqual(300, _game.score());
 }
 ```
@@ -77,7 +77,7 @@ Below is a summary of all actions in the Kata. Once you’re familiar with the Kat
 6.	Create an int with class scope to record the *_currentRoll*.
 7.	Create an int with class scope to hold the *_score*.
 8.	Alter *_roll* to add to _score and put roll in *_rolls[_currentRoll++]*.
-9.	Chane the Score property to a Score() method that calculates score using *_rolls[]*.
+9.	Change the Score property to a Score() method that calculates score using *_rolls[]*.
 10.	CLTR+B – won’t build – refactor tests to call Score().
 11.	CTRL + R, A – Green 
 12.	Remove class-scoped *_score* variable – not needed.
@@ -105,13 +105,13 @@ Below is a summary of all actions in the Kata. Once you’re familiar with the Kat
 2.	CTRL + R, A – Red
 3.	Add code to handle a strike.
 4.	CTRL + R, A – Green 
-5.	Extract _strikeBonus() method (CTRL + .).
+5.	Extract StrikeBonus() method (CTRL + .).
 6.	CTRL + R, A – Green 
-7.	Extract _spareBonus() method (CTRL + .)
+7.	Extract SpareBonus() method (CTRL + .)
 8.	CTRL + R, A – Green 
-9.	Extract _isStrike() method (CTRL + .)
+9.	Extract IsStrike() method (CTRL + .)
 10.	CTRL + R, A – Green
-11.	Extract _rollStrike() method from TestStrike() in the tests.
+11.	Extract RollStrike() method from TestOneStrike() in the tests.
 12.	CTRL + R, A – Green
 
 ### Commit 5 - the Perfect Game test

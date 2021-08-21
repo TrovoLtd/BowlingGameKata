@@ -4,12 +4,14 @@
 
 This is the fourth part of a series describing a straight port of [Uncle Bob's Bowling Game Kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata) from Java to C# .Net and Visual Studio. 
 
-We've got as far as the fourth test, which helps us add functionality for rolling a strike.
+We've got as far as the fourth commit, where we add the functionality for rolling a strike.
 
-## Add the test for a strike
+## Add the test for rolling a strike
+
+1. Add the test below, which includes a Roll of 10 (i.e. a strike)..
 
 ```csharp
-[TestMethod]
+[Test]
 public void TestOneStrike()
 {
     _game.Roll(10); // strike
@@ -21,13 +23,13 @@ public void TestOneStrike()
 }
 ```
 
-1. **CTRL + R, A** 
+2. **CTRL + R, A** 
 
 <span style="color:red">**TESTS FAIL Red** (TestOneStrike fails – Expected 24, Actual 17).</span>
 
-(Plus there’s an ugly comment once more)…
+(Plus there's an ugly comment once more)…
 
-2. Now change Score() to pass the test.
+3. Now change Score() to pass the test.
 
 ```csharp
 public int Score()
@@ -39,9 +41,9 @@ public int Score()
         if(_rolls[frameIndex] == 10) // strike – ugly comment
         {
             score += 10 + _rolls[frameIndex + 1]  + _rolls[frameIndex + 2];
-            frameIndex++; // Move on one if there’s a strike
+            frameIndex++; // Move on a frame if there's a strike
  	    }
-        else if (_isSpare(frameIndex))
+        else if (IsSpare(frameIndex))
         {
             score += 10 + _rolls[frameIndex + 2];
             frameIndex += 2; // Moved here
@@ -57,7 +59,7 @@ public int Score()
 }
 ```
 
-3. **CTRL + R, A** 
+4. **CTRL + R, A** 
 
 <span style="color:green">**TESTS PASS GREEN**</span>
 
@@ -65,7 +67,9 @@ public int Score()
 
 ## Refactoring the Game class
 
-4. The following refactorings can be made to Game to make it more readable. First, extract a _strikeBonus helper method (**CTRL + . – Extract Method**)
+The following refactorings can be made to Game to make it more readable:
+
+5. First, extract a _strikeBonus helper method (**CTRL + . – Extract Method**)
 
 ```csharp
 public int Score()
@@ -77,11 +81,10 @@ public int Score()
     {
         if(_rolls[frameIndex] == 10) // strike
         {
-            score += 10 + 
- 	 	 	_strikeBonus(frameIndex); // < More readable
+            score += 10 + StrikeBonus(frameIndex); // < More readable
             frameIndex++;
  	    }
- 	    else if (_isSpare(frameIndex))
+ 	    else if (IsSpare(frameIndex))
         {
             ...
 		}
@@ -89,19 +92,19 @@ public int Score()
     return score;
 }
 
-private int _strikeBonus(int frameIndex)
+private int StrikeBonus(int frameIndex)
 {
     return _rolls[frameIndex + 1] + _rolls[frameIndex + 2];
 }
 ```
 
-5. **CTRL + R, A**
+6. **CTRL + R, A**
 
 <span style="color:green">**TESTS PASS GREEN**</span>
 
-_strikeBonus() hasn't broken anything...
+... so extracting StrikeBonus() hasn't broken anything...
 
-6. Then do the same for _spareBonus().
+7. Then do the same for SpareBonus() -  **CTRL + .**.
 
 ```csharp
 public int Score()
@@ -113,9 +116,9 @@ public int Score()
     {
  		...
     }
- 	else if (_isSpare(frameIndex))
+ 	else if (IsSpare(frameIndex))
     {
-        score += 10 + _spareBonus(frameIndex);
+        score += 10 + SpareBonus(frameIndex);
     }
     
     return score;
@@ -123,13 +126,13 @@ public int Score()
 
 ...
 
-private int _spareBonus(int frameIndex)
+private int SpareBonus(int frameIndex)
 {
     return _rolls[frameIndex + 2];
 }
 ```
 
-7. Then extract the sum of balls in frame:
+8. Then extract the sum of balls in frame (**CTRL + .**):
 
 ```csharp
 public int Score()
@@ -142,7 +145,7 @@ public int Score()
  		...
  	    else
         {
-             	    score += _sumOfBallsInFrame(frameIndex);
+			score += SumOfBallsInFrame(frameIndex);
         }
     }
     
@@ -151,13 +154,13 @@ public int Score()
 
 ...
 
-private int _sumOfBallsInFrame(int frameIndex)
+private int SumOfBallsInFrame(int frameIndex)
 {
     return _rolls[frameIndex] + _rolls[frameIndex + 1];
 }
 ```
 
-8. Finally, extract a test for the _isStrike(frameIndex) condition:
+9. Finally, extract a test for the IsStrike(frameIndex) condition:
 
 ```csharp
 public int Score()
@@ -167,13 +170,12 @@ public int Score()
     
     for (int frame = 0; frame < 10; frame++)
     {
-        if(_isStrike(frameIndex)) // strike
+        if(IsStrike(frameIndex)) // strike
         {
-            score += 10 + 
- 	 	 	_strikeBonus(frameIndex); // < More readable
+            score += 10 + StrikeBonus(frameIndex); // < More readable
  	 	    frameIndex++;
  	    }
- 	    else if (_isSpare(frameIndex))
+ 	    else if (IsSpare(frameIndex))
         {
              ...
 		}
@@ -184,7 +186,7 @@ public int Score()
     return score;
 }
 
-private bool _isStrike(int frameIndex)
+private bool IsStrike(int frameIndex)
 {
     return _rolls[frameIndex] == 10;
 }
@@ -192,14 +194,16 @@ private bool _isStrike(int frameIndex)
 
 ## Refactor the test class
 
-9. Extract a _rollStrike() method  from the _game.roll(10) line in the TestStrike test using **CTRL + .** It should end up looking like this:
+10. Extract a RollStrike() method  from the _game.Roll(10) line in the TestStrike test using **CTRL + .** It should end up looking like this:
 
 ```csharp
-private void _rollStrike()
+private void RollStrike()
 {
     _game.roll(10);
 }
 ```
+
+11. Commit with the message *Adds test for a strike*.
 
 ## Structure of the C# / VS port
 
