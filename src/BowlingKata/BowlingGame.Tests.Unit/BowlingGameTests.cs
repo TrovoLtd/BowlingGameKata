@@ -17,7 +17,7 @@ namespace BowlingGame.Tests.Unit
         {
             RollMany(20, 0);
 
-            Assert.AreEqual(0, _game.Score);
+            Assert.AreEqual(0, _game.Score());
         }
 
 
@@ -26,7 +26,24 @@ namespace BowlingGame.Tests.Unit
         {
             RollMany(20, 1);
 
-            Assert.AreEqual(20, _game.Score);
+            Assert.AreEqual(20, _game.Score());
+        }
+
+        [Test]
+        public void TestOneSpare()
+        {
+            RollSpare();
+            _game.Roll(3);
+
+            RollMany(17, 0);
+
+            Assert.AreEqual(16, _game.Score());
+        }
+
+        private void RollSpare()
+        {
+            _game.Roll(5);
+            _game.Roll(5);
         }
 
         private void RollMany(int n, int pins)
