@@ -40,6 +40,23 @@ namespace BowlingGame.Tests.Unit
             Assert.AreEqual(16, _game.Score());
         }
 
+        [Test]
+        public void TestOneStrike()
+        {
+            RollStrike();
+            _game.Roll(3);
+            _game.Roll(4);
+
+            RollMany(16, 0);
+
+            Assert.AreEqual(24, _game.Score());
+        }
+
+        private void RollStrike()
+        {
+            _game.Roll(10);
+        }
+
         private void RollSpare()
         {
             _game.Roll(5);
