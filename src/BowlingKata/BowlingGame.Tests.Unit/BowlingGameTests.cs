@@ -52,6 +52,14 @@ namespace BowlingGame.Tests.Unit
             Assert.AreEqual(24, _game.Score());
         }
 
+        [Test]
+        public void TestPerfectGame()
+        {
+            RollMany(12, 10);
+
+            Assert.AreEqual(300, _game.Score());
+        }
+
         private void RollStrike()
         {
             _game.Roll(10);
