@@ -38,5 +38,5 @@ My port of the Bowling Game Kata is broken down into the following sections, whi
 * [Commit 4](COMMIT_4.md) - etc etc
 * [Commit 5](COMMIT_5.md) - etc
 
-There's also a Visual Studio Commits branch, with the five commits posted to it, so you can see the state the code should be in at the end of each part of the Kata.
+There's also a Visual Studio Commits branch, with the [five commits posted to it](https://github.com/TrovoLtd/BowlingGameKata/commits/TheCommits/src/BowlingKata), so you can see the state the code should be in at the end of each part of the Kata.
 
