@@ -6,6 +6,8 @@ This is [Uncle Bob's Bowling Game Kata](http://www.butunclebob.com/ArticleS.Uncl
 
 Just to reiterate, the point of the Bowling Game Kata is to follow it closely, learn it and commit it to muscle memory like a [video game Speedrun](https://www.twitch.tv/gamesdonequick).
 
+There's a [walkthrough of Commit 2 on YouTube](https://youtu.be/vJw4RpTM7ks).
+
 ## Begin
 
 1. Add a second ‘TestAllOnes’ test to the BowlingGamesTests fixture. You can re-use the "surround with" approach from the [previous commit](COMMIT_1.md) here.

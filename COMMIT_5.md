@@ -1,5 +1,7 @@
 # Commit 5, and Summary
 
+There's a [walkthrough of Commits 4 and 5 on YouTube](https://youtu.be/5b7E2lAlxsc).
+
 ## The Perfect Game test
 
 1. Add a final test for a perfect game. It *should* just pass with no changes required to the Game class.

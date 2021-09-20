@@ -10,6 +10,8 @@ So when the code in this Commit goes wrong a couple of times, work through it: i
 
 Indeed if you learn to work through the wrong without thinking about it, it's not only teaching you, it's getting you *in the habit* of doing it, which is even better.
 
+There's a [walkthrough of Commit 3 on YouTube](https://youtu.be/UM3Rmc5xQSA).
+
 ## Begin
 
 1. Add a test for a spare.

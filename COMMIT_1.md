@@ -10,6 +10,8 @@ Start from scratch each time, and don't deviate from the process too much, but i
 
 Once you're getting familiar with all the moves, you can use the summary I've made after the [final commit](COMMIT_5.md) to help get your speed up.
 
+There's also a [walkthrough of Commit 1 on YouTube](https://youtu.be/FObylzQf7xo).
+
 ## Begin
 
 1. Open Visual Studio and create a New > Project **(CTRL + Shift + N)**. 

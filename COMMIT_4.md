@@ -2,7 +2,7 @@
 
 ## Adding a strike
 
-This is the fourth part of a series describing a straight port of [Uncle Bob's Bowling Game Kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata) from Java to C# .Net and Visual Studio. 
+This is the fourth part of a series describing a straight port of [Uncle Bob's Bowling Game Kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata) from Java to C# .Net and Visual Studio. There's also a [walkthrough of Commits 4 and 5 on YouTube](https://youtu.be/5b7E2lAlxsc).
 
 We've got as far as the fourth commit, where we add the functionality for rolling a strike.
 
