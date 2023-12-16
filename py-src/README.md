@@ -25,3 +25,7 @@ This last issue in particular means it's important to produce code that can be u
 ## Setting up a Python Virtual Environment
 
 The first step towards neat and tidy Python application code is to [Setup a Python Virtual Environment](VENV.md). 
+
+## Towards Unit Testing
+
+The underlying goal of this exercise is to embed Unit Testing in our Python application, however. Until we're at a point where we can quickly and easily tell if upgrades to the underlying Interpreter or any of the dependencies our app uses have broken anything, we're in trouble, and that's what Unit Testing and TDD give us. Which is the point of the Kata, after all. (I.e.: making TDD a fundamental habit so we never write any code that we can't manage change around).
