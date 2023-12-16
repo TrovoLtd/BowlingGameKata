@@ -10,17 +10,17 @@ The original version was written for Java / JUnit and put into a PowerPoint deck
 
 The point of the kata is to *get developers into the habit of red / green / refactor Test-Driven-Development*. 
 
-It's not a coding test as such – you're not supposed to get precious with it, redesign it or come up with fancy ways of doing it better. You are just supposed to follow it as quickly as you can. 
+It's not a coding test as such - you're not supposed to get precious with it, redesign it or come up with fancy ways of doing it better. You are just supposed to follow it as quickly as you can. 
 
-Furthermore, you are supposed to *practice* it, so you commit it to memory, and then to "muscle memory" – so you end up doing it without thinking. The first few times you do it, it takes way over an hour. However, once you're in the realms of doing it without thinking, it should take minutes.
+Furthermore, you are supposed to *practice* it, so you commit it to memory, and then to "muscle memory" - so you end up doing it without thinking. The first few times you do it, it takes way over an hour. However, once you're in the realms of doing it without thinking, it should take minutes.
 
-Also (and this is the point) – once you can do it in a few minutes, then you'll truly be in the habit of writing code Test First, and refactoring it as you go along. This is a hard habit to get into, but you're a much better developer once you're there.
+Also (and this is the point) - once you can do it in a few minutes, then you'll truly be in the habit of writing code Test First, and refactoring it as you go along. This is a hard habit to get into, but you're a much better developer once you're there.
 
 ## Why bowling?
 
-The genius of the kata is that it has ten-pin bowling as its topic. Ten-pin bowling is, on the surface, one of the simplest possible games – you're simply knocking pins down with a ball, and getting a point for each one, right? 
+The genius of the kata is that it has ten-pin bowling as its topic. Ten-pin bowling is, on the surface, one of the simplest possible games - you're simply knocking pins down with a ball, and getting a point for each one, right? 
 
-However – there are a few serious complexities lurking in the [scoring system](INITIAL_DESIGN.md) – and in this respect it's very much like every "simple" app or system you'd ever be asked to code in real life. It looks simple, but you don't have to go too far into it before it'll tie you up in knots.
+However - there are a few serious complexities lurking in the [scoring system](INITIAL_DESIGN.md) - and in this respect it's very much like every "simple" app or system you'd ever be asked to code in real life. It looks simple, but you don't have to go too far into it before it'll tie you up in knots.
 
 This makes it a great choice for illustrating how to refactor your way from the simplest possible starting point towards a much more complex outcome, while keeping the code "in the green" (i.e. with all tests passing) for the maximum amount of time. 
 
