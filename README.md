@@ -1,10 +1,14 @@
 # Uncle Bob's Bowling Game Coding Kata
 
-## Ported to C# and Visual Studio
+## Ported to C# and Visual Studio - and now (well, eventually) with added Python
 
 One way of keeping Test-Driven-Development, code design and refactoring skills sharp is to follow [Uncle Bob Martin's bowling game kata](http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata). 
 
-The original version was written for Java / JUnit and put into a PowerPoint deck, so I've ported it to Visual Studio. Even though the original has been there for a long time (in Internet years), we can't rely on it always being there (though it has been [sucked into the Internet Archive](https://web.archive.org/web/20180201183323/http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata), where it might last a little bit longer).
+The original version was written for Java / JUnit and put into a PowerPoint deck, so first of all I ported it to Visual Studio (though it's stuck on the 2019 version, as I'm not working as a C# software engineer these day). 
+
+_However:_ I'm currently becoming a "Data Product Owner" (whatever that means) - and so I'm getting into Python. With that in mind, I thought I'd also add a Python port. You can see more about that in the [Python Source ReadMe](py-src/README.md).
+
+Even though the original has been there for a long time (in Internet years), we can't rely on it always being there (though it has been [sucked into the Internet Archive](https://web.archive.org/web/20180201183323/http://www.butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata), where it might last a little bit longer).
 
 ## What is the Bowling Game kata?
 
