@@ -10,7 +10,7 @@ Claudio also provides a [Cookie Cutter Python Project](https://github.com/cjolow
 
 ## The Python Commits Branch
 
-Like my [C# Visual Studio Port](../README.md), I'll commit all the Python changes onto a separate branch of this repo (which I'll refer to as ThePyCommits), though I'll keep all the documentation about what I'm doing on this main branch too.
+Like my [C# Visual Studio Port](../README.md), I'll commit all the Python changes for the Kata onto a separate branch of this repo (which I'll refer to as ThePyCommits), though I'll keep all the documentation about what I'm doing on this main branch too. So the process of setting up a Python [Virtual Environment](VENV.md), Build and Project, and getting it ready to run Unit Tests in, will all be documented on the Main Branch. 
 
 ## Why keep my Python code neat, tidy and manageable?
 
